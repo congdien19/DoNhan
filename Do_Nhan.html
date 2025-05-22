@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cửa Hàng Thời Trang Hàng Hiệu | Đẳng Cấp – Phong Cách – Xu Hướng Mới</title>
+    <style>
+        /* Reset & base */
+        * {
+            box-sizing: border-box;
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: #f5f5f7;
+            color: #f50202;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navbar */
+        header {
+            background: #222;
+            color: #fff;
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: 1.5px;
+            color: #f39c12;
+            cursor: default;
+        }
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            font-weight: 600;
+            color: white;
+            transition: color 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+        .nav-links a:hover {
+            background-color: #f39c12;
+            color: #dd2323;
+        }
+
+        /* Hero section */
+        #hero {
+            background: url('https://images.unsplash.com/photo-1581922180230-4b0d2d95a8b6?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+            height: 480px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(248, 203, 56);
+            text-shadow: 0 0 8px 
+            
+            
+            
+            
+            rgba(0,0,0,0.7);
+            flex-direction: column;
+            text-align: center;
+            padding: 0 20px;
+        }
+        #hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        #hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+        #hero button {
+            background: #f39c12;
+            border: none;
+            padding: 16px 36px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            color: #222;
+            font-weight: 700;
+            box-shadow: 0 6px 12px rgba(243, 156, 18, 0.7);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        #hero button:hover {
+            background: #e67e22;
+            color: white;
+        }
+
+        /* Sections */
+        section {
+            padding: 70px 30px;
+            background: white;
+            margin: 60px 0;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+        section h2 {
+            font-size: 2.8rem;
+            color: #f39c12;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+        section h3 {
+            font-size: 1.8rem;
+            color: #e67e22;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            border-left: 6px solid #f39c12;
+            padding-left: 14px;
+            text-transform: uppercase;
+        }
+
+        p {
+            max-width: 900px;
+            margin: 0 auto 26px auto;
+            font-size: 1.15rem;
+            color: #444;
+            line-height: 1.85;
+            font-weight: 400;
+        }
+        ul {
+            max-width: 900px;
+            margin: 0 auto 30px auto;
+            padding-left: 28px;
+            color: #555;
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+        ul li {
+            margin-bottom: 12px;
+        }
+        ul li strong {
+            font-weight: 700;
+            color: #d35400;
+        }
+
+        /* Products grid */
+        #products .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 36px;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(243,156,18,0.35);
+        }
+        .product-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+        .product-info {
+            padding: 20px 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .product-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: #222;
+            letter-spacing: 1px;
+        }
+        .product-desc {
+            font-size: 1rem;
+            color: #666;
+            flex-grow: 1;
+            margin-bottom: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #f39c12;
+            user-select: none;
+        }
+
+        /* Contact section */
+        #contact form {
+            max-width: 550px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 26px;
+        }
+        #contact label {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #444;
+            font-size: 1.1rem;
+        }
+        #contact input, #contact textarea {
+            padding: 14px 18px;
+            font-size: 1.1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            resize: vertical;
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #contact input:focus, #contact textarea:focus {
+            outline: none;
+            border-color: #f39c12;
+            box-shadow: 0 0 12px rgba(243,156,18,0.5);
+        }
+        #contact button {
+            padding: 18px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            background-color: #f39c12;
+            border: none;
+            border-radius: 40px;
+            color: #222;
+            cursor: pointer;
+            transition: background-color 0.35s ease, color 0.35s ease;
+            box-shadow: 0 8px 18px rgba(243,156,18,0.7);
+        }
+        #contact button:hover {
+            background-color: #e67e22;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: #111;
+            color: #ddd;
+            padding: 50px 30px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        footer .footer-container {
+            max-width: 1150px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            justify-content: space-between;
+        }
+        footer .footer-col {
+            flex: 1 1 260px;
+            min-width: 260px;
+        }
+        footer h3 {
+            color: #f39c12;
+            margin-bottom: 22px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 1.4rem;
+        }
+        footer p, footer li, footer a {
+            color: #ddd;
+            font-weight: 400;
+            font-size: 1rem;
+        }
+        footer ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        footer ul li {
+            margin-bottom: 12px;
+        }
+        footer ul li a {
+            color: #ddd;
+            transition: color 0.3s ease;
+        }
+        footer ul li a:hover {
+            color: #f39c12;
+        }
+
+        footer .social-links {
+            display: flex;
+            gap: 24px;
+            margin-top: 20px;
+        }
+        footer .social-links a {
+            font-size: 1.6rem;
+            color: #ddd;
+            transition: color 0.3s ease;
+        }
+        footer .social-links a:hover {
+            color: #f39c12;
+        }
+
+        footer .copyright {
+            text-align: center;
+            margin-top: 38px;
+            border-top: 1px solid #333;
+            padding-top: 26px;
+            color: #666;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.8px;
+            user-select: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .nav-links {
+                justify-content: center;
+            }
+            header nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            footer .footer-container {
+                flex-direction: column;
+                gap: 40px;
+                align-items: center;
+            }
+            footer .footer-col {
+                min-width: 85%;
+            }
+            #hero {
+                height: 360px;
+            }
+            #hero h1 {
+                font-size: 2.4rem;
+            }
+            #hero p {
+                font-size: 1.1rem;
+                max-width: 90%;
+            }
+            section h2 {
+                font-size: 2.2rem;
+                margin-bottom: 28px;
+            }
+            section h3 {
+                font-size: 1.4rem;
+                margin-top: 28px;
+                margin-bottom: 14px;
+            }
+        }
+        @media (max-width: 480px) {
+            #hero h1 {
+                font-size: 2rem;
+            }
+            #hero button {
+                padding: 12px 28px;
+                font-size: 1rem;
+            }
+            .product-card {
+                transition: none;
+            }
+            .product-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+    </style>
+    <!-- Font Awesome Icons CDN for social icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="brand">FashionZone</div>
+                <div class="nav-links">
+                    <a href="#hero">HOME</a>
+                    <a href="#products">ABOUT</a>
+                    <a href="#collections">BLOG</a>
+                    <a href="#offers">CONTACT US</a>
+                    
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" style="background: url('https://vantaydecor.com/wp-content/uploads/2023/10/Thiet-ke-shop-quan-ao-nu-nho-dep-vua-tiet-kiem-khong-gian-vua-tang-suc-canh-tranh.jpg ') center/cover no-repeat;">
+        <h1>Thời trang đỉnh cao</h1>
+        <p style="color: #ffffff;  font-weight:800 ; ">Khám phá bộ sưu tập quần áo phong cách, trẻ trung và hợp mốt nhất năm 2024 tại FashionZone. Chúng tôi cam kết mang đến sự sang trọng, đẳng cấp và xu hướng mới nhất dành cho bạn.</p>
+        <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Xem Sản Phẩm</button>
+    </section>
+
+    <section id="products" class="container">
+        <h2>Sản phẩm nổi bật</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1520974722507-8320a510d7e4?auto=format&fit=crop&w=600&q=80" alt="Áo thun nam" class="product-img" />
+                <div class="product-info">
+                    <div class="product-name">Áo thun nam Basic</div>
+                    <div class="product-desc">Áo thun chất liệu cotton mềm mại, thoáng mát, phù hợp cho mọi hoạt động trong ngày.</div>
+                    <div class="product-price">250,000₫</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" alt="Áo sơ mi nữ" class="product-img" />
+                <div class="product-info">
+                    <div class="product-name">Áo sơ mi nữ cổ điển</div>
+                    <div class="product-desc">Áo sơ mi thanh lịch với kiểu dáng cổ điển, thích hợp đi làm hoặc đi chơi.</div>
+                    <div class="product-price">430,000₫</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1520972554754-0cd4a1fcebb1?auto=format&fit=crop&w=600&q=80" alt="Quần jeans nam" class="product-img" />
+                <div class="product-info">
+                    <div class="product-name">Quần jeans nam rách</div>
+                    <div class="product-desc">Quần jeans trẻ trung, đường may chắc chắn và kiểu dáng thời thượng.</div>
+                    <div class="product-price">550,000₫</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=600&q=80" alt="Váy nữ" class="product-img" />
+                <div class="product-info">
+                    <div class="product-name">Váy nữ dạo phố</div>
+                    <div class="product-desc">Váy nhẹ nhàng, phong cách nữ tính cho những buổi dạo phố cuối tuần.</div>
+                    <div class="product-price">470,000₫</div>
+                </div>
+            </div>
+            <!-- Additional 4 products -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=600&q=80" alt="Áo khoác nam" class="product-img" />
+                <div class="product-info">
+                    <div class="product-name">Áo khoác nam mùa đông</div>
+                    <div class="product-desc">Áo khoác ấm áp, thiết kế hiện đại, phù hợp cho các ngày lạnh.</div>
+                    <div class="product-price">1,200,000₫</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1520972575443-746ec66bf1d0?auto=format&fit=crop&w=600&q=80" alt="Chân váy nữ" class="product-img" />
+                <div class="product-info">
+                    <div class="product-name">Chân váy nữ xếp li</div>
+                    <div class="product-desc">Chân váy xếp ly thanh lịch, dễ phối đồ, p phù hợp nhiều hoàn cảnh.</div>
+                    <div class="product-price">380,000₫</div>
+                </div>
+            </div>
+            
+           
+        </div>
+    </section>
+    
+
+    <section id="collections" class="container">
+        <h2>Bộ sưu tập mới nhất</h2>
+        <h3>Bộ sưu tập Xuân Hè 2024</h3>
+        <p>
+            Đón chào mùa mới với những thiết kế tươi trẻ, màu sắc rực rỡ và phong cách năng động. Bộ sưu tập Xuân Hè năm nay tập trung vào sự thoải mái và thể hiện cá tính riêng biệt của bạn. Bạn sẽ tìm thấy những chiếc áo thun, váy maxi, quần short và áo sơ mi nhẹ nhàng phù hợp với mọi hoàn cảnh.
+        </p>
+        <p>
+            Chúng tôi chú trọng vào từng chi tiết nhỏ nhất: đường may sắc nét, form chuẩn mực giúp tôn lên vóc dáng, cùng chất liệu cao cấp giữ cho bạn luôn thoải mái và tinh tế suốt cả ngày dài.
+        </p>
+
+        <h3>Bộ sưu tập Công sở thanh lịch</h3>
+        <p>
+            Dành cho những người yêu thích phong cách sang trọng và lịch thiệp, bộ sưu tập công sở giúp bạn tự tin tỏa sáng nơi làm việc với các trang phục được cắt may tinh tế, chất liệu cao cấp. Từ những chiếc áo blazer thanh lịch, chân váy bút chì đến quần tây cắt may hoàn hảo, tất cả đều thiết kế nhằm tăng sự chuyên nghiệp mà vẫn thoải mái.
+        </p>
+        <p>
+            Ngoài ra, chúng tôi còn cung cấp nhiều lựa chọn phụ kiện phối hợp như túi xách da, đồng hồ thiết kế, giúp bạn tạo nên bộ trang phục hoàn chỉnh, phản ánh đúng gu thời trang đẳng cấp của mình.
+        </p>
+    </section>
+
+    <section id="offers" class="container">
+        <h2>Ưu đãi đặc biệt</h2>
+        <h3>Giảm giá mùa lễ hội</h3>
+        <p>
+            Nhân dịp lễ hội sắp tới, FashionZone mang đến chương trình giảm giá lên đến 30% cho các sản phẩm yêu thích. Đây là cơ hội tuyệt vời để bạn làm mới tủ đồ của mình với những món đồ thời trang chất lượng mà không lo về giá.
+        </p>
+        <p>
+            Ưu đãi áp dụng cho tất cả các mặt hàng, bao gồm quần áo, phụ kiện, giày dép. Đừng bỏ lỡ cơ hội kết hợp mua sắm trải nghiệm với những món quà hấp dẫn kèm theo.
+        </p>
+
+        <h3>Mua 2 tặng 1</h3>
+        <p>
+            Áp dụng cho các sản phẩm áo thun, sơ mi và váy trong bộ sưu tập mùa này. Khi mua 2 sản phẩm, bạn sẽ nhận được 1 sản phẩm tặng hoàn toàn miễn phí. Cơ hội này giúp bạn tỏa sáng phong cách với nhiều lựa chọn đa dạng hơn.
+        </p>
+        <p>
+            Chương trình áp dụng trong thời gian giới hạn. Hãy nhanh tay để không bỏ lỡ!
+        </p>
+    </section>
+
+    <section id="style" class="container">
+        <h2>Phong cách của chúng tôi</h2>
+        <h3>Sự kết hợp giữa truyền thống và hiện đại</h3>
+        <p>
+            FashionZone luôn hướng đến sự hòa quyện tinh tế giữa nét đẹp truyền thống và xu hướng thời trang hiện đại, tạo nên những bộ trang phục vừa đẹp mắt lại vừa mang đậm dấu ấn cá nhân.
+        </p>
+        <p>
+            Chúng tôi không chỉ thiết kế mà còn kể câu chuyện qua từng bộ sưu tập, lấy cảm hứng từ văn hóa, nghệ thuật và phong cách sống đa dạng trên toàn thế giới.
+        </p>
+        <h3>Chất liệu và kỹ thuật may hàng đầu</h3>
+        <p>
+            Chúng tôi sử dụng các chất liệu cao cấp kết hợp cùng công nghệ may tiên tiến, đảm bảo sự bền bỉ, mềm mại và thoải mái tối đa cho người mặc. Đội ngũ thợ may lành nghề luôn tỉ mỉ trong từng đường kim mũi chỉ.
+        </p>
+        <p>
+            Điều này không những giúp sản phẩm giữ dáng tốt theo thời gian mà còn mang lại cảm giác dễ chịu tuyệt đối, giúp bạn tự tin và thoải mái trong mọi hoạt động.
+        </p>
+    </section>
+
+    <section id="size-guide" class="container">
+        <h2>Hướng dẫn chọn size</h2>
+        <p>
+            Để giúp bạn chọn được trang phục vừa vặn nhất, FashionZone cung cấp bảng hướng dẫn chọn size chi tiết cho cả nam và nữ. Việc chọn size phù hợp giúp bạn thoải mái hơn và tránh phải đổi trả mất thời gian.
+        </p>
+        <h3>Bảng size nam</h3>
+        <ul>
+            <li><strong>Size S:</strong> Vòng ngực 88-92cm, Vòng eo 76-80cm, Chiều dài tay 58-60cm</li>
+            <li><strong>Size M:</strong> Vòng ngực 93-97cm, Vòng eo 81-85cm, Chiều dài tay 60-62cm</li>
+            <li><strong>Size L:</strong> Vòng ngực 98-102cm, Vòng eo 86-90cm, Chiều dài tay 62-64cm</li>
+            <li><strong>Size XL:</strong> Vòng ngực 103-107cm, Vòng eo 91-95cm, Chiều dài tay 64-66cm</li>
+        </ul>
+        <h3>Bảng size nữ</h3>
+        <ul>
+            <li><strong>Size S:</strong> Vòng ngực 82-86cm, Vòng eo 62-66cm, Chiều dài tay 56-58cm</li>
+            <li><strong>Size M:</strong> Vòng ngực 87-91cm, Vòng eo 67-71cm, Chiều dài tay 58-60cm</li>
+            <li><strong>Size L:</strong> Vòng ngực 92-96cm, Vòng eo 72-76cm, Chiều dài tay 60-62cm</li>
+            <li><strong>Size XL:</strong> Vòng ngực 97-101cm, Vòng eo 77-81cm, Chiều dài tay 62-64cm</li>
+        </ul>
+        <p>
+            Nếu bạn cần tư vấn thêm về sizing, đừng ngần ngại liên hệ với bộ phận chăm sóc khách hàng của chúng tôi.
+        </p>
+    </section>
+
+    <section id="customer-care" class="container">
+        <h2>Dịch vụ chăm sóc khách hàng</h2>
+        <h3>Hỗ trợ tư vấn mua hàng</h3>
+        <p>
+            Đội ngũ tư vấn viên của FashionZone luôn sẵn sàng hỗ trợ bạn lựa chọn sản phẩm phù hợp nhất với phong cách và nhu cầu của bạn. Chúng tôi cung cấp các kênh hỗ trợ qua điện thoại, chat trực tuyến và email.
+        </p>
+        <h3>Chính sách đổi trả linh hoạt</h3>
+        <p>
+            Nếu sản phẩm không phù hợp hoặc có lỗi kỹ thuật, bạn có thể đổi trả trong vòng 7 ngày kể từ ngày nhận hàng theo chính sách của chúng tôi. Các quy trình đổi trả nhanh gọn và đảm bảo quyền lợi khách hàng.
+        </p>
+        <h3>Giao hàng nhanh chóng & an toàn</h3>
+        <p>
+            FashionZone đảm bảo giao hàng tận nơi trong thời gian ngắn nhất với các đối tác vận chuyển uy tín và chuyên nghiệp. Chúng tôi luôn đảm bảo sản phẩm đến tay bạn trong điều kiện hoàn hảo nhất.
+        </p>
+    </section>
+
+    <section id="brand-story" class="container">
+        <h2>Câu chuyện thương hiệu</h2>
+        <p>
+            Được thành lập vào năm 2010, FashionZone xuất phát từ niềm đam mê mang lại phong cách thời trang cao cấp và đa dạng cho người Việt Nam. Chúng tôi muốn tạo ra một không gian mua sắm thuận tiện, nơi bạn có thể tìm thấy những bộ trang phục thể hiện cá tính riêng của chính mình.
+        </p>
+        <p>
+            Trải qua hơn một thập kỷ phát triển, FashionZone không ngừng đổi mới và mở rộng bộ sưu tập, hợp tác với các nhà thiết kế tài năng và áp dụng công nghệ hiện đại. Chúng tôi tự hào là thương hiệu được nhiều khách hàng tin tưởng và yêu thích.
+        </p>
+    </section>
+
+    <section id="reviews" class="container">
+        <h2>Đánh giá khách hàng</h2>
+        <h3>Nguyễn Trang - Khách hàng thân thiết</h3>
+        <p>
+            "FashionZone luôn là nơi tôi lựa chọn khi cần một bộ trang phục lịch sự, đẹp mắt cho công việc. Chất lượng sản phẩm tuyệt vời cùng dịch vụ khách hàng tận tâm khiến tôi luôn hài lòng."
+        </p>
+        <h3>Trần Minh Đức - Người yêu thời trang</h3>
+        <p>
+            "Bộ sưu tập mới thật sự ấn tượng! Tôi rất thích các mẫu thiết kế trẻ trung, năng động và chất liệu mặc rất thoải mái. Đội ngũ tư vấn cũng rất thân thiện và giúp tôi chọn size chuẩn."
+        </p>
+        <h3>Phạm Thị Lan - Một khách hàng khó tính</h3>
+        <p>
+            "Tôi là người khá khó tính trong việc chọn quần áo, nhưng với FashionZone, tôi luôn tìm thấy món đồ vừa ý từ thiết kế đến chất lượng. Đây là cửa hàng tôi khuyên mọi người nên thử."
+        </p>
+    </section>
+
+    <section id="about" class="container">
+        <h2>Giới thiệu về FashionZone</h2>
+        <p>
+            FashionZone là cửa hàng quần áo thời trang hàng đầu dành cho tất cả mọi người. Chúng tôi mang đến những sản phẩm chất lượng cao với giá cả hợp lý, phù hợp nhiều phong cách khác nhau từ trẻ trung, thanh lịch đến cá tính. Cam kết phục vụ khách hàng với sự tận tâm, chuyên nghiệp và trải nghiệm mua sắm tuyệt vời.
+        </p>
+        <p>
+            Với bộ sưu tập luôn được cập nhật theo xu hướng mới nhất, FashionZone hy vọng sẽ là người bạn đồng hành đáng tin cậy của bạn trong hành trình tìm kiếm phong cách riêng biệt và sự tự tin tỏa sáng.
+        </p>
+    </section>
+
+    <section id="contact" class="container">
+        <h2>Liên hệ với chúng tôi</h2>
+        <p>
+            Nếu bạn có bất kỳ câu hỏi hoặc cần tư vấn thêm, xin vui lòng điền vào mẫu dưới đây hoặc gọi điện trực tiếp cho chúng tôi qua số hotline: <strong>0901 234 567</strong>.
+        </p>
+        <form onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm.'); this.reset();">
+            <label for="name">Họ và tên</label>
+            <input id="name" type="text" placeholder="Nhập họ và tên" required />
+
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="Nhập email của bạn" required />
+
+            <label for="message">Nội dung</label>
+            <textarea id="message" rows="6" placeholder="Viết tin nhắn ở đây" required></textarea>
+
+            <button type="submit">Gửi</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>FashionZone</h3>
+                <p>Địa chỉ: 123 Đường Thời Trang, Quận 1, TP. Hồ Chí Minh</p>
+                <p>Điện thoại: <a href="tel:+84901234567">0901 234 567</a></p>
+                <p>Email: <a href="mailto:support@fashionzone.vn">support@fashionzone.vn</a></p>
+            </div>
+            <div class="footer-col">
+                <h3>Liên kết nhanh</h3>
+                <ul>
+                    <li><a href="#hero">hone</a></li>
+                    <li><a href="#products">about</a></li>
+                    <li><a href="#collections">blog</a></li>
+                    <li><a href="#offers">conact us</a></li>
+                    
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Kết nối với chúng tôi</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Zalo"><i class="fas fa-comment-dots"></i></a>
+                </div>
+                <p style="margin-top: 15px;">Theo dõi chúng tôi để cập nhật xu hướng mới nhất và ưu đãi hấp dẫn.</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2024 FashionZone. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
+
